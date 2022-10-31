@@ -26,13 +26,3 @@ char	*get_next_line(int fd)
 	str = ft_new_str(str);
 	return (line);
 }
-// int main()
-// {
-// 	int fd = open("text.txt", O_RDONLY);
-// 	char *c = get_next_line(fd);
-// // 	while (c)
-// // 	{
-// // 		printf("%s", c);
-// // 		c = get_next_line(fd);
-// // 	}	
-// }
