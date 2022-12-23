@@ -98,7 +98,9 @@ char	*ft_get_line(char *str)
 		return (NULL);
 	while (str[i] && str[i] != '\n')
 		i++;
-	s = (char *)malloc(sizeof(char) * (i + 2));
+	if(str[i] == '\n')
+		i++;
+	s = (char *)malloc(sizeof(char) * (i + 1));
 	if (!s)
 		return (NULL);
 	i = 0;
@@ -116,31 +118,31 @@ char	*ft_get_line(char *str)
 	return (s);
 }
 
-char	*ft_new_str(char *lstr)
+char	*ft_new_str(char *str)
 {
 	int		i;
 	int		j;
-	char	*str;
+	char	*lstr;
 
 	i = 0;
-	while (lstr[i] && lstr[i] != '\n')
+	while (str[i] && str[i] != '\n')
 		i++;
-	if (!lstr[i])
+	if (!str[i])
 	{
-		free(lstr);
+		free(str);
 		return (NULL);
 	}
-	str = (char *)malloc(sizeof(char) * (ft_strlen(lstr) - i + 1));
-	if (!str)
+	lstr = (char *)malloc(sizeof(char) * (ft_strlen(str) - i + 1));
+	if (!lstr)
 	{
-		free(lstr);
+		free(str);
 		return (NULL);
 	}
 	i++;
 	j = 0;
-	while (lstr[i])
-		str[j++] = lstr[i++];
-	str[j] = '\0';
-	free(lstr);
-	return (str);
+	while (str[i])
+		lstr[j++] = str[i++];
+	lstr[j] = '\0';
+	free(str);
+	return (lstr);
 }
